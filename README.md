@@ -1,3 +1,3 @@
 ## just a test
 
-trying out the github actions for automating tests before merging pull requests.
+trying out the github actions for :robot: automating tests before merging pull requests.

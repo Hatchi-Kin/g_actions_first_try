@@ -1,5 +1,4 @@
 from connection import Connection
-# from connection import Connection
 
 
 def create_test_table():
