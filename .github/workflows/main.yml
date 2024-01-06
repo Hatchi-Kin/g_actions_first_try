@@ -27,10 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Wait for MySQL
       run: sleep 15  
-    - name: Create test table
-      id: create-test-table
-      run: |
-        pytest -s tests/test_data.py -k create_test_table
     - name: Run tests
       run: |
         pytest tests/test_data.py
