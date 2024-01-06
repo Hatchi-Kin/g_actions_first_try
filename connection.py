@@ -4,7 +4,7 @@ import mysql.connector as mysql
 class Connection:
     __USER = 'root'
     __PWD = 'example'
-    __HOST = 'mysql'
+    __HOST = 'localhost'
     __PORT = '3306'
     __DB = 'testdb'
     __cursor = None
