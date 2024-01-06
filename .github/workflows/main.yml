@@ -9,14 +9,12 @@ jobs:
 
     services:
       mysql:
-        image: mariadb
+        image: mysql
         env:
           MYSQL_ROOT_PASSWORD: example
           MYSQL_DATABASE: testdb
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -27,16 +25,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Test MariaDB connection
-      run: |
-        echo "Testing MariaDB connection..."
-        mysql -h 127.0.0.1 -P 3306 -u root -pexample -e "SHOW DATABASES;"
+    - name: Wait for MySQL
+      run: sleep 15  
     - name: Create test table
       id: create-test-table
       run: |
         pytest -s tests/test_data.py -k create_test_table
-    - name: Wait for MySQL
-      run: sleep 15  
     - name: Run tests
       run: |
         pytest tests/test_data.py
