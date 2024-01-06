@@ -31,6 +31,10 @@ jobs:
       id: create-test-table
       run: |
         pytest -s tests/test_data.py -k create_test_table
+    - name: Test MariaDB connection
+      run: |
+        echo "Testing MariaDB connection..."
+        mysql -h 127.0.0.1 -P 3306 -u root -pexample -e "SHOW DATABASES;"
     - name: Wait for MySQL
       run: sleep 15  
     - name: Run tests
