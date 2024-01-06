@@ -1,5 +1,6 @@
 import mysql.connector as mysql
 
+
 class Connection:
     __USER = 'root'
     __PWD = 'example'
@@ -30,6 +31,7 @@ class Connection:
         cls.__cursor = None
 
 
+
 def create_test_table():
     cursor = Connection.connect()
     query = "CREATE TABLE test_table (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255))"
@@ -39,6 +41,7 @@ def create_test_table():
 
 
 def test_table_exists():
+    create_test_table()
     cursor = Connection.connect()
     cursor.execute("SHOW TABLES LIKE 'test_table'")
     result = cursor.fetchone()
